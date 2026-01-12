@@ -118,3 +118,88 @@ function countWords(words) {
     return appeared;
 }
 console.log(countWords(['apple', 'grape', 'apple', 'apple']))
+
+//PART 2
+//11o
+const arrayO = ['search', 'hello', 'search', ' world', 'good', 'search'];
+let index = 0;
+for (let i = 0; i < arrayO.length; i++) {
+    const value = arrayO[i];
+
+    if (value === 'search') {
+        index++;
+    } 
+   
+}
+ console.log(index); //3
+ //11p
+ let index2 = 0;
+ for (let i = 0; i < arrayO.length; i++) {
+    const value = arrayO[i];
+
+    if (value === 'search') {
+        index2++;
+        break;
+    }
+ }
+ console.log(index2);
+ //11q
+function findIndex(array, word) {
+    for (let i = 0; i < array.length; i++) {
+
+        if (array[i] === word) {
+            return i;
+        }
+
+    }
+    return -1; //return negative 1 if no value is find
+}
+console.log(findIndex(['green', 'red', 'blue', 'red'], 'red')); //1
+console.log(findIndex(['green', 'red', 'blue', 'red'], 'yellow'));
+//11r
+function removeEgg(foods) {
+    const goods = []; 
+    for (let i = 0; i < foods.length; i++) {
+        const getFood = foods[i];
+
+        if (getFood === 'egg') {
+            continue;
+        }
+        goods.push(getFood)
+    }
+    return goods;
+}
+console.log(removeEgg(['egg', 'apple', 'egg', 'egg', 'ham'])); //filter eggs
+//11s
+function removeEgg2(foods) {
+    let result = [];
+    let count = 0;
+    for (let i = 0; i < foods.length; i++) {
+        const getFood = foods[i];
+
+        if (getFood === 'egg' && count < 2) {
+            count++
+            continue;
+        }
+        result.push(getFood);
+    }
+    return result;
+}
+console.log(removeEgg2(['egg', 'apple', 'egg', 'egg', 'ham']));
+
+//11t
+function removeEgg3(foods) {
+    const reverseFood = foods.reverse(); //reverse the order of values
+    let result = [];
+    let count = 0;
+    for (let i = 0; i < foods.length; i++) {
+        if (reverseFood[i] === 'egg' && count < 2) {
+            count++
+            continue;
+        }
+        result.push(reverseFood[i]); 
+    }
+    return result.reverse(); //return to original order after reversing
+}
+console.log(removeEgg3(['egg', 'apple', 'egg', 'egg', 'ham']));
+//11u
