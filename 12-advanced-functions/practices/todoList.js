@@ -7,6 +7,19 @@ function renderData() {
     const container = document.querySelector('.container');
     let html = '';
 
+    myArray.forEach( (getValObject, i) => { //change the function method to ARROW FUNCTIN
+        const { name, date } = getValObject;
+
+        html += `
+                <div>${name}</div>
+                <div>${date}</div>
+                <button class="js-delete"
+                 onclick="myArray.splice(${i}, 1)
+                    renderData(); ">Delete
+                </button>
+                `;
+    });
+/*
     myArray.forEach(function (getValObject, i) {
         const {name, date} = getValObject;
 
@@ -18,7 +31,8 @@ function renderData() {
                     renderData(); ">Delete
                 </button>
                 `
-    });
+    }); 
+*/
     container.innerHTML = html;
     return html;
 }

@@ -9,6 +9,26 @@ let score = JSON.parse(localStorage.getItem('score')) || {
 const autoPlayBtn = document.querySelector('.btnAuto');
 let autoPlaying = false;
 let id; //set the variable outside the function to not bug
+function autoPlay () { //prefer this functio method instead if arrow function
+  if (!autoPlaying) {
+    id = setInterval( () => { //change the function method to ARROW FUNCTION - PART 2
+      const playerMove = computerMove();
+      playGame(playerMove);
+      updateScore();
+    }, 1000);
+    autoPlaying = true;
+    autoPlayBtn.innerHTML = 'Stop'
+    autoPlayBtn.classList.add('stop') //css
+  }
+  else {
+    autoPlayBtn.innerHTML = 'Auto Play'
+    autoPlayBtn.classList.remove('stop') //remove the css
+    clearInterval(id);
+    autoPlaying = false;
+  }
+}
+
+/*
 function autoPlay() {
   if (!autoPlaying) {
     id = setInterval(function() {
@@ -26,6 +46,7 @@ function autoPlay() {
     autoPlaying = false;
   }
 }
+  */
 
 updateScore()
 
