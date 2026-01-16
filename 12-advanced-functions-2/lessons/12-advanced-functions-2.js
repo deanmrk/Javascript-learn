@@ -60,3 +60,50 @@ btnEventListener.addEventListener('click', () => { //arow function
 
 //REMOVE EVENT LISTENER
 btnEventListener.removeEventListener('click', eventListener) //call it without brackets to work
+
+
+
+//.FILTER() 
+const array1 = [1, -5, 3];
+   /* const filterArray = array1.filter( (value, i) => {
+        
+        if (value >= 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
+        
+        return value >= 0; //works same way as the above code
+    }); 
+console.log(filterArray); //filter() does NOT modify the original array, so
+//if u console.log(array1) directly, it will only display the original values.
+    */
+const array1Copy = array1.filter( value => {return value >= 0}); //shortest method when only using 1 variable and 1 line of code
+console.log(array1Copy);
+
+
+//.map() = ALTERNATIVE WAY JUST LIKE THE ACCUMULATOR PATTERN
+const array2 = [1,1,3];
+    /*
+    const array2Map = array2.map( (value, i) => {
+        //return 5; //display [5,5,5]
+        return value + 2; //display [3,3,5]
+    });
+    
+console.log(array2Map); //map() does NOT modify the original array, so
+//if u console.log(array2) directly, it will only display the original values.
+    */
+const array2Copy = array2.map( value => {return value + 3}); //shortest method, if only using 1 variable and 1 line of code
+console.log(array2Copy); // display [4,4,6]
+
+//CLOSURE FEATURE
+const closureBtn = document.querySelectorAll('.closureBtn');
+closureBtn.forEach( (value, i) => {
+    
+    value.addEventListener('click', () => {
+        console.log(i) //display the index of that button u clicked
+    })
+    
+})
+//console.log(i) - this will return undefined because the loop ended and i is no longer exist
