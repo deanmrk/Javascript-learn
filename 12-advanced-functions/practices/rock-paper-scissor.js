@@ -27,6 +27,33 @@ function autoPlay () { //prefer this functio method instead if arrow function
     autoPlaying = false;
   }
 }
+//INSTEAD OF onclick="", im gonna use addEventListener
+const btnRock = document.querySelector('.btnRock');
+const btnPaper = document.querySelector('.btnPaper');
+const btnScissors = document.querySelector('.btnScissors');
+
+btnRock.addEventListener('click', () => { //you need to create a function, instead of calling direct function
+  playGame('rock'); //otherwise your button will only return undefined value
+});
+btnPaper.addEventListener('click', () => {
+  playGame('paper');
+});
+btnScissors.addEventListener('click', () => {
+  playGame('scissors');
+});
+
+//Play the game using keyboard
+document.body.addEventListener('keydown', (event) => { //get the body of html
+  if (event.key === 'r') {
+    playGame('rock');
+  }
+  else if (event.key === 'p') {
+    playGame('paper');
+  }
+  else if (event.key === 's') {
+    playGame('scissors');
+  }
+});
 
 /*
 function autoPlay() {

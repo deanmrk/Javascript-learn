@@ -2,47 +2,39 @@ const myArray = [
     {name: 'Wash', date: '2025-09-01'},
     {name: 'Bath', date: '2025-09-10'}
 ];
+
+const container = document.querySelector('.container');
+
 renderData()
 function renderData() {
-    const container = document.querySelector('.container');
     let html = '';
 
-    myArray.forEach( (getValObject, i) => { //change the function method to ARROW FUNCTIN
+    myArray.forEach( (getValObject) => { //change the function method to ARROW FUNCTIN
         const { name, date } = getValObject;
 
         html += `
                 <div>${name}</div>
                 <div>${date}</div>
-                <button class="js-delete"
-                 onclick="myArray.splice(${i}, 1)
-                    renderData(); ">Delete
-                </button>
+                <button class="js-delete deleteBtn">Delete</button>
                 `;
     });
-/*
-    myArray.forEach(function (getValObject, i) {
-        const {name, date} = getValObject;
-
-        html += `
-                <div>${name}</div>
-                <div>${date}</div>
-                <button class="js-delete"
-                 onclick="myArray.splice(${i}, 1)
-                    renderData(); ">Delete
-                </button>
-                `
-    }); 
-*/
     container.innerHTML = html;
-    return html;
+
+    const deleteBtn = document.querySelectorAll('.deleteBtn'); //if many buttons is needed, u need querySelectorAll
+    deleteBtn.forEach( (value, i) => { //2 parameters, value = buttons / i = index
+        value.addEventListener('click', () => { //buttons.addEventListener
+            myArray.splice(i, 1);
+            renderData();
+        })
+    })
 }
 
 function text() {
     const input = document.querySelector('.js-input');
     const date = document.querySelector('.js-date');
     
-    getInput = input.value;
-    getDate = date.value;
+    const getInput = input.value;
+    const getDate = date.value;
 
     if (!getInput || !getDate) {
         alert('Please fill all the blanks!');
@@ -60,3 +52,10 @@ function enter(event) {
         text();
     }
 }
+
+//CHANGE THE CLICK METHOD OF onlick="" to addEventListener
+const addBtn = document.querySelector('.addBtn');
+
+addBtn.addEventListener('click', () => {
+    text();
+});
