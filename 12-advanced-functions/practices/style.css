@@ -49,3 +49,10 @@ body {
 .stop {
     background-color: rgb(32, 29, 218);
 }
+
+.container {
+    display: none;
+}
+.containerToggled {
+    display: flex;
+}
