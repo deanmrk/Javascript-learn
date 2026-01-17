@@ -31,6 +31,8 @@ function autoPlay () { //prefer this functio method instead if arrow function
 const btnRock = document.querySelector('.btnRock');
 const btnPaper = document.querySelector('.btnPaper');
 const btnScissors = document.querySelector('.btnScissors');
+const btnAutoPlay = document.querySelector('.btnAuto');
+const btnReset = document.querySelector('.btnReset');
 
 btnRock.addEventListener('click', () => { //you need to create a function, instead of calling direct function
   playGame('rock'); //otherwise your button will only return undefined value
@@ -41,9 +43,15 @@ btnPaper.addEventListener('click', () => {
 btnScissors.addEventListener('click', () => {
   playGame('scissors');
 });
+btnAutoPlay.addEventListener('click', () => {
+  autoPlay();
+});
+btnReset.addEventListener('click', () => {
+  toggleReset()
+});
 
 //Play the game using keyboard
-document.body.addEventListener('keydown', (event) => { //get the body of html
+window.addEventListener('keydown', (event) => { //get the body of html
   if (event.key === 'r') {
     playGame('rock');
   }
@@ -53,7 +61,15 @@ document.body.addEventListener('keydown', (event) => { //get the body of html
   else if (event.key === 's') {
     playGame('scissors');
   }
+  else if (event.key === 'a') { //12u
+    autoPlay();
+  }
+  else if (event.key === 'Escape') {
+    reset();
+  }
 });
+
+
 
 /*
 function autoPlay() {
@@ -158,7 +174,23 @@ function reset() {
     score.ties = 0
     localStorage.removeItem('score')
     updateScore()
-    alert('Score reset!')
     //window.location.reload();
 }
 
+//12x
+const container = document.querySelector('.container');
+
+function toggleReset() {
+  const btnYes = document.querySelector('.btnYes');
+  const btnNo = document.querySelector('.btnNo');
+  container.classList.add('containerToggled');
+  
+  btnYes.addEventListener('click', () => {
+    reset();
+    container.classList.remove('containerToggled');
+  })
+
+   btnNo.addEventListener('click', () => {
+    container.classList.remove('containerToggled');
+  })
+}
